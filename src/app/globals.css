@@ -19,8 +19,61 @@
   }
 }
 
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+h6{
+  color: oklch(70.5% 0.015 286.067);
+}
+
+.animated-border-box {
+  position: relative;
+  background: #1a202c; /* Cor de fundo do conteúdo interno */
+  border-radius: 1.5rem; /* Bordas arredondadas */
+  overflow: hidden; /* Garante que a animação não vaze */
+  padding: 2px; /* Espessura da borda */
+  z-index: 1;
+}
+
+.animated-border-box::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    #89f7fe,
+    #66a6ff,
+    #ffb1e6,
+    #d386f5,
+    #ff91a9,
+    #ffc586,
+    #fff189,
+    #b4f884,
+    #89f7fe
+  );
+  animation: rotate 4s linear infinite;
+}
+
+.inner-content {
+  background: #1a202c; /* DEVE ser a mesma cor do .animated-border-box */
+  padding: 2rem 1.5rem;
+  border-radius: calc(1.5rem - 2px); /* Arredondamento um pouco menor que o container */
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: linear-gradient(135deg, #2a2a2a, #1d1c1c);
+  /* background-image: url('textura-subtile.png'); */
+  background-blend-mode: overlay;
+  color: whitesmoke;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
 }

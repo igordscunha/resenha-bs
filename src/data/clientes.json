@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Igor Cunha",
+    "testimonial": "Esses caras são brabos... entrei feio e saí parecendo um ator da Globo!",
+    "imageUrl": "igorcunha.png"
+  },
+  {
+    "id": 2,
+    "name": "Lucas Ribeiro",
+    "testimonial": "Sensacional! Espaço lindo, muito organizado e ótimo atendimento!",
+    "imageUrl": "lucasribeiro.png"
+  },
+  {
+    "id": 3,
+    "name": "Rafael Moura",
+    "testimonial": "Excelente, rápido e preciso. Fácil acesso e localização",
+    "imageUrl": "rafaelmoura.png"
+  },
+  {
+    "id": 4,
+    "name": "Matheus Dutra",
+    "testimonial": "Sou suspeito pra falar, mas que trabalho lindo dos amigos!",
+    "imageUrl": "matheusdutra.png"
+  },
+  {
+    "id": 5,
+    "name": "Paulo Alexandre",
+    "testimonial": "Conforto e praticidade são a marca registrada do Resenha Barber Club!",
+    "imageUrl": "pauloalexandre.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Pedro Dutra",
+    "testimonial": "O tapa no telhado todo fim de semana é certo!",
+    "imageUrl": "pedrodutra.jpeg"
+  }
+]

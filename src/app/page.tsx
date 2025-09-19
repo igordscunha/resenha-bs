@@ -1,103 +1,121 @@
-import Image from "next/image";
+import ServicesComponent from "./components/services/ServicesComponent";
+import { FaInstagram, FaMapPin, FaPhoneAlt } from "react-icons/fa";
+import PricesTableComponent from "./components/pricestable/PricesTableComponent";
+import TopicComponent from "./components/topic/TopicComponent";
+import { AiOutlineSchedule } from "react-icons/ai";
+import ScheduleComponent from "./components/schedule/ScheduleComponent";
+import ColorfulBorderComponent from "./components/colorful_border/ColorfulBorderComponent";
+import { chakra_petch, diplomata, major_mono_display } from "./fonts/fonts"
+import CaruoselComponent from "./components/carousel/CarouselComponent";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* CAPA */}
+      <section className="bg-[url(/background-barbearia.jpg)] bg-fixed min-h-screen bg-cover flex items-center justify-center">
+        <div className="text-center text-white flex flex-col justify-center items-center gap-5">
+          <img src="meu_icone.svg" className="w-2/5"/>
+          <h2 className={`text-3xl ${diplomata.className}`}>Resenha Barber Club</h2>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+
+
+      {/* SOBRE */}
+      <section id="sobre" className="px-6 md:py-20 space-y-10 text-white md:min-h-screen md:flex md:flex-col md:items-center">
+        <TopicComponent>Sobre</TopicComponent>
+        <div className="md:w-2/3">
+          <div className="py-3">
+            <p className={`text-center md:text-xl md:pb-12 ${chakra_petch.className}`}>
+              Na Resenha Barber Club, você encontra o lugar ideal para renovar seu estilo, onde tradição e inovação se misturam para criar experiências únicas de cuidado e autoestima.<br/><br/>
+
+              Nossa equipe alia técnicas clássicas e inovação, garantindo cortes de cabelo precisos, modelagem de barba personalizada e tratamentos de tingimento e descoloração que cuidam e valorizam cada fio.<br/><br/>
+
+              O ambiente descontraído e acolhedor convida a uma verdadeira resenha entre amigos.<br/><br/>
+
+              Agende seu horário e descubra por que a Resenha Barber Club é o ponto de encontro ideal para quem busca mais do que um simples corte: aqui, seu estilo ganha voz.
+            </p>
+          </div>
+
+          <div className={`text-center text-2xl py-12 ${major_mono_display.className}`}>Barbeiros</div>
+
+          <div className={`flex gap-8 justify-evenly pb-12 text-xl font-semibold ${major_mono_display.className}`}>
+            <div className="flex flex-col gap-2 items-center">
+              <a href="https://instagram.com/allanreisbarbeiro" target="_blank">
+                <img src="allan.jpg" className="shadow-xl/30 rounded-sm transform hover:scale-105 transition-transform duration-300 ease-in-out"/>
+              </a>
+              <p>Allan</p>
+            </div>
+
+            <div className="flex flex-col gap-2 items-center">
+              <a href="https://www.instagram.com/dg_allvez_/" target="_blank">
+                <img src="dg.jpg" className="shadow-xl/30 rounded-sm transform hover:scale-105 transition-transform duration-300 ease-in-out"/>
+              </a>
+              <p>Douglas (DG)</p>
+            </div>
+
+            <div className="flex flex-col gap-2 items-center">
+              <a href="https://instagram.com/th_lobato.reis" target="_blank">
+                <img src="thiago.jpg" className="shadow-xl/30 rounded-sm htransform hover:scale-105 transition-transform duration-300 ease-in-out"/>
+              </a>
+              <p>Thiago</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* SERVIÇOS */}
+
+      <ServicesComponent/>
+
+      {/* TABELA PREÇOS */}
+
+      <PricesTableComponent/>
+
+      {/* HORÁRIO */}
+
+      <section id="horarios" className="p-6 py-15 md:py-24 md:flex md:flex-col md:items-center md:min-h-screen">
+        <TopicComponent>Horários</TopicComponent>
+        <div className="grid grid-cols-2 gap-2 text-center py-10 md:w-2/3">
+          <ScheduleComponent dia="Segunda-feira" horario="10:00 às 20:00" barbeiro="Allan e Thiago"/>
+          <ScheduleComponent dia="Terça-feira" horario="10:00 às 20:00" barbeiro="DG e Thiago"/>
+          <ScheduleComponent dia="Quarta-feira" horario="10:00 às 20:00" barbeiro="Allan e DG"/>
+          <ScheduleComponent dia="Quinta-feira" horario="10:00 às 20:00" barbeiro="Allan, DG e Thiago"/>
+          <ScheduleComponent dia="Sexta-feira" horario="10:00 às 20:00" barbeiro="Allan, DG e Thiago"/>
+          <ScheduleComponent dia="Sábado" horario="09:00 às 16:00" barbeiro="Allan, DG e Thiago"/>
+        </div>
+
+        <div><a href="https://www.trinks.com/resenhabarberclub" target="_blank">
+          <ColorfulBorderComponent header="Agende no nosso Trinks" 
+          content="Clique aqui para acessar nosso Trinks e agendar o quanto antes para ficar bonito!"/>
+        </a></div>
+
+      </section>
+
+      {/* DEPOIMENTOS */}
+
+      <CaruoselComponent/>
+
+      {/* CONTATO */}
+
+      <section id="contato" className="p-6 md:flex md:flex-col md:justify-center md:items-center md:min-h-screen">
+        <TopicComponent>Contato</TopicComponent>
+        <span className={`text-2xl hidden md:block text-center ${major_mono_display.className}`}>Entre em contato conosco</span>
+        <div className="py-8 flex flex-col items-center text-center md:flex-row md:justify-center md:w-2/3 gap-10">
+          <span className={`text-2xl md:hidden ${major_mono_display.className}`}>Entre em contato conosco</span>
+          <div className={`flex flex-col gap-3 md:justify-center ${chakra_petch.className}`}>
+            <span className="flex items-center gap-3"><FaPhoneAlt /> <span>(21) 96566-3943</span></span>
+            <span className="flex items-center gap-3"><AiOutlineSchedule /> <a href="https://www.trinks.com/resenhabarberclub" target="_blank"><span>Trinks Agendamento</span></a></span>
+            <span className="flex items-center gap-3"><FaInstagram /><a href="https://www.instagram.com/resenhabarber.club/" target="_blank"><span>Instagram Resenha Barber Club</span></a></span>
+            <span className="flex items-center gap-3"><FaMapPin /><span>Rua Barão de Ubá, 560, sala 901</span></span>
+          </div>
+          <div className="w-full">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.895016514632!2d-43.214149923984884!3d-22.917242779247687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997fab0e6d98e7%3A0x2265a7d9f69717e4!2sR.%20Bar%C3%A3o%20de%20Ub%C3%A1%2C%20560%20-%20Pra%C3%A7a%20da%20Bandeira%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020260-050!5e0!3m2!1spt-BR!2sbr!4v1758033294055!5m2!1spt-BR!2sbr" className="w-full" height="450" allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
