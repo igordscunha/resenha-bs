@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { MenuComponent } from "../menu/MenuComponent";
+import Image from "next/image";
 
 function HeaderComponent() {
 
@@ -35,7 +36,7 @@ function HeaderComponent() {
     <header className={headerClasses}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <span><img src="logo-com-texto-horizontal.png" alt="logo com texto horizontal" className="w-1/6"/></span>
+          <span><Image src="logo-com-texto-horizontal.png" alt="logo com texto horizontal" width={0} height={0} unoptimized className="w-1/6"/></span>
           
           {/* Menu de navegação para Desktop */}
           <nav className="hidden md:flex space-x-8">

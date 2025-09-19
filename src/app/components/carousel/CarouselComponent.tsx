@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import testimonialsData from "../../../data/clientes.json" assert { type: 'json' };
 import { chakra_petch, major_mono_display } from "@/app/fonts/fonts";
+import Image from "next/image";
 
 const ChevronLeftIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -71,17 +72,12 @@ function CaruoselComponent(){
           >
             {testimonialsData.map((testimonial) => (
               <div key={testimonial.id} className="w-full flex-shrink-0 p-8 md:p-12 text-center">
-                <img
-                  src={testimonial.imageUrl}
-                  alt={`Foto de ${testimonial.name}`}
-                  className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-lg"
-                  onError={(e) => (e.currentTarget.src = 'https://placehold.co/100x100?text=Erro')}
-                />
+                <Image src={testimonial.imageUrl} alt="imagem do cliente" width={0} height={0} unoptimized className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-lg"
+                  onError={(e) => (e.currentTarget.src = 'https://placehold.co/100x100?text=Erro')}/>
                 <p className="text-lg md:text-xl text-gray-600 italic leading-relaxed mb-6">
-                  "{testimonial.testimonial}"
+                  &quot;{testimonial.testimonial}&quot;
                 </p>
                 <div className="font-bold text-gray-800 text-lg">{testimonial.name}</div>
-                {/* <div className="text-indigo-500 text-sm">{testimonial.role}</div> */}
               </div>
             ))}
           </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import TopicComponent from "../topic/TopicComponent";
 import { chakra_petch, major_mono_display } from "@/app/fonts/fonts";
+import Image from 'next/image';
 
 function ServicesComponent(){
 
@@ -55,19 +56,19 @@ function ServicesComponent(){
         <div className="flex gap-6 md:justify-center">
           <div className="p-4">
             <button onClick={() => setAtivo('tesoura')} className={estilizacaoBotoes('tesoura')}>
-              <img src="tesouras.png" alt="tesouras" className="md:scale-125 md:p-3"/>
+              <Image src="/tesouras.png" alt="tesouras" width={54} height={54} className="md:scale-125 md:p-3"/>
             </button>
           </div>
 
           <div className="p-4">
             <button onClick={() => setAtivo('maquina')} className={estilizacaoBotoes('maquina')}>
-              <img src="barba.png" alt="maquina de cortar cabelo" className="md:scale-125 md:p-3"/>
+              <Image src="/barba.png" alt="maquina de cortar cabelo" width={54} height={54} className="md:scale-125 md:p-3"/>
             </button>
           </div>
 
           <div className="p-4">
             <button onClick={() => setAtivo('tinta')} className={estilizacaoBotoes('tinta')}>
-              <img src="pincel-para-tingir-cabelo.png" alt="pincel para tingir cabelo" className="md:scale-125 md:p-3"/>
+              <Image src="/pincel-para-tingir-cabelo.png" alt="pincel para tingir cabelo" width={54} height={54} className="md:scale-125 md:p-3"/>
             </button>
           </div>
         </div>

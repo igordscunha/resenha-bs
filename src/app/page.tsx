@@ -7,6 +7,7 @@ import ScheduleComponent from "./components/schedule/ScheduleComponent";
 import ColorfulBorderComponent from "./components/colorful_border/ColorfulBorderComponent";
 import { chakra_petch, diplomata, major_mono_display } from "./fonts/fonts"
 import CaruoselComponent from "./components/carousel/CarouselComponent";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
       {/* CAPA */}
       <section className="bg-[url(/background-barbearia.jpg)] bg-fixed min-h-screen bg-cover flex items-center justify-center">
         <div className="text-center text-white flex flex-col justify-center items-center gap-5">
-          <img src="meu_icone.svg" className="w-2/5"/>
+          <Image src="/meu_icone.svg" alt="icone da barbearia" width={0} height={0} unoptimized className="w-2/5"/>
           <h2 className={`text-3xl ${diplomata.className}`}>Resenha Barber Club</h2>
         </div>
       </section>
@@ -43,21 +44,21 @@ export default function Home() {
           <div className={`flex gap-8 justify-evenly pb-12 text-xl font-semibold ${major_mono_display.className}`}>
             <div className="flex flex-col gap-2 items-center">
               <a href="https://instagram.com/allanreisbarbeiro" target="_blank">
-                <img src="allan.jpg" className="shadow-xl/30 rounded-sm transform hover:scale-105 transition-transform duration-300 ease-in-out"/>
+              <Image src="/allan.jpg" alt="barbeiro allan" width={260} height={260} className="shadow-xl/30 rounded-sm transform hover:scale-105 transition-transform duration-300 ease-in-out"/>
               </a>
               <p>Allan</p>
             </div>
 
             <div className="flex flex-col gap-2 items-center">
               <a href="https://www.instagram.com/dg_allvez_/" target="_blank">
-                <img src="dg.jpg" className="shadow-xl/30 rounded-sm transform hover:scale-105 transition-transform duration-300 ease-in-out"/>
+                <Image src="/dg.jpg" alt="barbeiro dg" width={260} height={260} className="shadow-xl/30 rounded-sm transform hover:scale-105 transition-transform duration-300 ease-in-out"/>
               </a>
               <p>Douglas (DG)</p>
             </div>
 
             <div className="flex flex-col gap-2 items-center">
               <a href="https://instagram.com/th_lobato.reis" target="_blank">
-                <img src="thiago.jpg" className="shadow-xl/30 rounded-sm htransform hover:scale-105 transition-transform duration-300 ease-in-out"/>
+                <Image src="/thiago.jpg" alt="barbeiro thiago" width={260} height={260} className="shadow-xl/30 rounded-sm transform hover:scale-105 transition-transform duration-300 ease-in-out"/>
               </a>
               <p>Thiago</p>
             </div>
