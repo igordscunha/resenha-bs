@@ -106,7 +106,7 @@ export default function Home() {
         <span className={`text-2xl hidden md:block text-center ${major_mono_display.className}`}>Entre em contato conosco</span>
         <div className="py-8 flex flex-col items-center text-center md:flex-row md:justify-center md:w-2/3 gap-10">
           <span className={`text-2xl md:hidden ${major_mono_display.className}`}>Entre em contato conosco</span>
-          <div className={`flex flex-col gap-3 md:justify-center ${chakra_petch.className}`}>
+          <div className={`flex flex-col gap-3 md:justify-center md:text-start ${chakra_petch.className}`}>
             <span className="flex items-center gap-3"><FaPhoneAlt /> <span>(21) 96566-3943</span></span>
             <span className="flex items-center gap-3"><AiOutlineSchedule /> <a href="https://www.trinks.com/resenhabarberclub" target="_blank"><span>Trinks Agendamento</span></a></span>
             <span className="flex items-center gap-3"><FaInstagram /><a href="https://www.instagram.com/resenhabarber.club/" target="_blank"><span>Instagram Resenha Barber Club</span></a></span>
