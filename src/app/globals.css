@@ -1,79 +1,97 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Paleta derivada da marca: roxo #55286b, creme #f7f3e3, vinho #38172c */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: #100a11;
+  --color-surface: #1a111b;
+  --color-surface-2: #241827;
+  --color-line: #3a2a3d;
+  --color-cream: #f5efdd;
+  --color-muted: #b8acb9;
+  --color-brand: #7a3ea3;
+  --color-brand-dark: #55286b;
+  --color-lilac: #c49be0;
+  --color-wine: #38172c;
+  --color-whatsapp: #25d366;
+
+  --font-display: var(--font-anton);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-instrument);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-h6{
-  color: oklch(70.5% 0.015 286.067);
-}
-
-.animated-border-box {
-  position: relative;
-  background: #1a202c; /* Cor de fundo do conteúdo interno */
-  border-radius: 1.5rem; /* Bordas arredondadas */
-  overflow: hidden; /* Garante que a animação não vaze */
-  padding: 2px; /* Espessura da borda */
-  z-index: 1;
-}
-
-.animated-border-box::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(
-    #89f7fe,
-    #66a6ff,
-    #ffb1e6,
-    #d386f5,
-    #ff91a9,
-    #ffc586,
-    #fff189,
-    #b4f884,
-    #89f7fe
-  );
-  animation: rotate 4s linear infinite;
-}
-
-.inner-content {
-  background: #1a202c; /* DEVE ser a mesma cor do .animated-border-box */
-  padding: 2rem 1.5rem;
-  border-radius: calc(1.5rem - 2px); /* Arredondamento um pouco menor que o container */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: dark;
 }
 
 body {
-  background: linear-gradient(135deg, #2a2a2a, #1d1c1c);
-  /* background-image: url('textura-subtile.png'); */
-  background-blend-mode: overlay;
-  color: whitesmoke;
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+::selection {
+  background: var(--color-brand);
+  color: var(--color-cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-lilac);
+  outline-offset: 3px;
 }
 
 button {
   cursor: pointer;
+}
+
+/* Textura sutil de ruído para dar profundidade ao fundo escuro */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Linha pontilhada estilo cardápio na tabela de preços */
+.leader {
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 2px dotted var(--color-line);
+  transform: translateY(-0.35rem);
+}
+
+/* Mapa do Google adaptado ao tema escuro */
+.map-dark {
+  filter: grayscale(1) invert(0.92) contrast(0.85) brightness(0.9);
+}
+
+/* Animação de entrada ao rolar a página */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero-in {
+  animation: hero-in 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-in { animation: none; }
 }

@@ -1,125 +1,62 @@
-import { FaWhatsapp } from "react-icons/fa";
-import { BotaoZapComponent } from "../buttons/ButtonsComponent";
+import { FaRegCalendarCheck } from "react-icons/fa";
+import { BotaoZapComponent, ButtonLinkComponent } from "../buttons/ButtonsComponent";
 import TopicComponent from "../topic/TopicComponent";
-import { chakra_petch, major_mono_display } from "@/app/fonts/fonts";
+import RevealComponent from "../reveal/RevealComponent";
+import { PRICES, TRINKS_URL } from "@/data/site";
 
 function PricesTableComponent(){
   return(
-    <section id="precos" className="p-6 flex gap-15 md:gap-24 flex-col md:justify-center md:items-center md:min-h-screen">
-      <TopicComponent>Preços</TopicComponent>
-      <span className={`text-sm text-center ${chakra_petch.className}`}>*promoção de 10% de desconto de segunda à quarta</span>
+    <section id="precos" className="relative py-24 md:py-32">
+      <div className="mx-auto grid max-w-7xl gap-14 px-5 md:px-8 lg:grid-cols-12 lg:gap-20">
 
-      {/* DESKTOP */}
-      <div className="hidden md:flex w-2/3">
+        <div className="lg:col-span-5 flex flex-col gap-8 lg:sticky lg:top-28 lg:self-start">
+          <TopicComponent eyebrow="Tabela" align="left" description="Preço justo, sem surpresa. Tintura e descoloração são avaliadas na hora — chama a gente pra um orçamento.">
+            Preços
+          </TopicComponent>
 
-        <div className="grid grid-cols-4 gap-10 w-full border-b-1 border-dotted border-lime-600">
-
-          <div className={`text-4xl text-slate-400 ${major_mono_display.className}`}>
-            Tesoura
-          </div>
-          <div className={`text-4xl text-slate-400 ${major_mono_display.className}`}>
-            Máquina
-          </div>
-          <div className={`text-4xl text-slate-400 ${major_mono_display.className}`}>
-            Barba
-          </div>
-          <div className={`text-4xl text-slate-400 ${major_mono_display.className}`}>
-            Combo
-          </div>
-          <div>
-            <div className="flex justify-between py-4 text-xl">
-              <span className={`text-base ${chakra_petch.className}`}>
-                Corte feito todo na tesoura ou máquina e tesoura
-              </span>
-              <span>
-                R$40
-              </span>
+          <RevealComponent delay={100}>
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand to-brand-dark p-7">
+              <span className="font-display text-6xl leading-none text-cream">10% OFF</span>
+              <p className="mt-2 font-serif text-2xl italic text-cream/90">de segunda a quarta-feira</p>
+              <span aria-hidden className="absolute -bottom-8 -right-4 font-display text-[9rem] leading-none text-cream/10">%</span>
             </div>
-          </div>
-          <div>
-            <div className="flex justify-between py-4 text-xl">
-              <span className={`text-base ${chakra_petch.className}`}>
-                Corte feito todo na maquina (com ou sem degrade)
-              </span>
-              <span>
-                R$35
-              </span>
-            </div>
-          </div>
-          <div>
-            <div className="flex justify-between py-4 text-xl">
-              <span className={`text-base ${chakra_petch.className}`}>
-                Experiencia única e completa para sua barba: alinhamento, esfoliação, toalha quente e finalização com massagem
-              </span>
-              <span>
-                R$40
-              </span>
-            </div>
-          </div>
-          <div>
-            <div className="flex justify-between py-4 text-xl">
-              <span className={`text-base ${chakra_petch.className}`}>
-                Corte tesoura + barba terapia
-              </span>
-              <span>
-                R$65
-              </span>
-            </div>
-          </div>
+          </RevealComponent>
+        </div>
 
+        <div className="lg:col-span-7">
+          <ul className="flex flex-col">
+            {PRICES.map((item, index) => (
+              <li key={item.name}>
+                <RevealComponent delay={index * 90}>
+                  <div className="border-b border-line py-7">
+                    <div className="flex items-end gap-4">
+                      <h3 className="font-display text-2xl md:text-3xl uppercase tracking-tight">{item.name}</h3>
+                      {item.highlight && (
+                        <span className="mb-1 hidden sm:inline-block rounded-full bg-lilac/15 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-lilac">
+                          {item.highlight}
+                        </span>
+                      )}
+                      <span className="leader" aria-hidden />
+                      <span className="font-display text-3xl md:text-4xl text-lilac">
+                        <span className="mr-1 align-top font-sans text-sm font-semibold text-muted">R$</span>{item.price}
+                      </span>
+                    </div>
+                    <p className="mt-2 max-w-md text-muted">{item.description}</p>
+                  </div>
+                </RevealComponent>
+              </li>
+            ))}
+          </ul>
+
+          <RevealComponent delay={200} className="mt-10 flex flex-col sm:flex-row gap-4">
+            <ButtonLinkComponent href={TRINKS_URL}>
+              <FaRegCalendarCheck aria-hidden className="text-base" />Agendar no Trinks
+            </ButtonLinkComponent>
+            <BotaoZapComponent>Tirar dúvidas</BotaoZapComponent>
+          </RevealComponent>
         </div>
 
       </div>
-
-      {/* MOBILE */}
-      <div className="block md:hidden">
-        <div>
-          <div className={`text-4xl py-6 ${major_mono_display.className}`}>Tesoura</div>
-          <div className="flex justify-between">
-            <span className={`${chakra_petch.className}`}>Corte feito todo na tesoura ou máquina e tesoura</span>
-            <span>R$40</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="block md:hidden">
-        <div>
-          <div className={`text-4xl py-6 ${major_mono_display.className}`}>Máquina</div>
-          <div className="flex justify-between">
-            <span className={`${chakra_petch.className}`}>Corte feito todo na maquina (com ou sem degrade)</span>
-            <span>R$35</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="block md:hidden">
-        <div>
-          <div className={`text-4xl py-6 ${major_mono_display.className}`}>Barba</div>
-          <div className="flex justify-between">
-            <span className={`${chakra_petch.className}`}>Experiencia única e completa para sua barba: alinhamento, esfoliação, toalha quente e finalização com massagem</span>
-            <span>R$40</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="block md:hidden">
-        <div>
-          <div className={`text-4xl py-6 ${major_mono_display.className}`}>Combo</div>
-          <div className="flex justify-between">
-            <span className={`${chakra_petch.className}`}>Corte tesoura + barba terapia</span>
-            <span>R$65</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex justify-center my-20">
-        <BotaoZapComponent>
-          <div className="flex items-center justify-center gap-4">
-            <FaWhatsapp />Entre em contato
-          </div>
-        </BotaoZapComponent>
-      </div>
-
     </section>
   )
 };

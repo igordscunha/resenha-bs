@@ -1,82 +1,41 @@
-"use client";
-
-import { useState } from "react";
+import { GiBeard, GiPaintBrush, GiScissors } from "react-icons/gi";
+import { IconType } from "react-icons";
 import TopicComponent from "../topic/TopicComponent";
-import { chakra_petch, major_mono_display } from "@/app/fonts/fonts";
-import Image from 'next/image';
+import RevealComponent from "../reveal/RevealComponent";
+import { SERVICES } from "@/data/site";
+
+const icons: Record<(typeof SERVICES)[number]["id"], IconType> = {
+  cabelo: GiScissors,
+  barba: GiBeard,
+  coloracao: GiPaintBrush,
+};
 
 function ServicesComponent(){
-
-  const [ativo, setAtivo] = useState('tesoura');
-
-  function renderConteudo(){
-    switch(ativo){
-      case 'tesoura':
-        return(
-          <div className="md:text-center md:flex md:flex-col md:gap-10 md:py-6">
-            <h3 className={`text-2xl md:text-5xl font-semibold text-gray-800 mb-3 ${major_mono_display.className}`}>Cabelo</h3>
-            <p className="text-gray-600 md:text-xl">
-              Oferecemos cortes personalizados que combinam a precisão da tesoura com a rapidez da máquina. Cada estilo é planejado conforme o formato do seu rosto e seu estilo de vida, garantindo um acabamento impecável.
-            </p>
-          </div>
-        );
-      case 'maquina':
-        return(
-          <div className="md:text-center md:flex md:flex-col md:gap-10 md:py-6">
-            <h3 className={`text-2xl md:text-5xl font-semibold text-gray-800 mb-3 ${major_mono_display.className}`}>Barba</h3>
-            <p className="text-gray-600 md:text-xl">
-              Experiência única e completa para sua barba: alinhamento, esfoliação, toalha quente e finalização com massagem. É pra sair bonito e relaxado.
-            </p>
-          </div>
-        );
-      case 'tinta':
-        return(
-          <div className="md:text-center md:flex md:flex-col md:gap-10 md:py-6">
-            <h3 className={`text-2xl md:text-5xl font-semibold text-gray-800 mb-3 ${major_mono_display.className}`}>Tinta / Descoloração</h3>
-            <p className={`text-gray-600 md:text-xl ${chakra_petch.className}`}>
-              Realizamos correção de cor, cobertura de fios brancos e processos criativos de destaque, como mechas e luzes. Usamos produtos de alta qualidade que protegem a estrutura dos fios, com tratamentos reconstrutores após o procedimento. Seja para uma mudança sutil ou um visual radical, garantimos uniformidade de tom e brilho natural.
-            </p>
-          </div>
-        );
-    }
-  };
-
-  function estilizacaoBotoes(conteudo: string){
-    const baseClass = "px-6 py-2 rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500";
-    if (ativo === conteudo) {
-      return `${baseClass} bg-[#8b30bfCC] opacity-90 text-white shadow`;
-    }
-    return `${baseClass} bg-gray-200 text-gray-700 hover:bg-gray-300`;
-  };
-
   return(
-    <section id="servicos" className="p-6 md:pt-24 md:flex md:justify-center w-full md:min-h-screen">
-      <div className="md:w-2/3 flex flex-col gap-15 md:gap-24">
-        <TopicComponent>Serviços</TopicComponent>
-        <div className="flex gap-6 md:justify-center">
-          <div className="p-4">
-            <button onClick={() => setAtivo('tesoura')} className={estilizacaoBotoes('tesoura')}>
-              <Image src="/tesouras.png" alt="tesouras" width={54} height={54} className="md:scale-125 md:p-3"/>
-            </button>
-          </div>
+    <section id="servicos" className="relative bg-surface py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-8">
+        <TopicComponent eyebrow="O que fazemos" description="Do corte clássico à transformação completa, cada atendimento é feito sem pressa e com atenção aos detalhes.">
+          Serviços
+        </TopicComponent>
 
-          <div className="p-4">
-            <button onClick={() => setAtivo('maquina')} className={estilizacaoBotoes('maquina')}>
-              <Image src="/barba.png" alt="maquina de cortar cabelo" width={54} height={54} className="md:scale-125 md:p-3"/>
-            </button>
-          </div>
-
-          <div className="p-4">
-            <button onClick={() => setAtivo('tinta')} className={estilizacaoBotoes('tinta')}>
-              <Image src="/pincel-para-tingir-cabelo.png" alt="pincel para tingir cabelo" width={54} height={54} className="md:scale-125 md:p-3"/>
-            </button>
-          </div>
+        <div className="mt-16 grid gap-5 md:grid-cols-3">
+          {SERVICES.map((service, index) => {
+            const Icon = icons[service.id];
+            return (
+              <RevealComponent key={service.id} delay={index * 120} className="h-full">
+                <article className="group relative h-full overflow-hidden rounded-3xl border border-line bg-ink p-8 md:p-10 transition-colors duration-500 hover:border-brand">
+                  <div aria-hidden className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/0 blur-3xl transition-all duration-700 group-hover:bg-brand/30" />
+                  <span className="font-display text-7xl text-line transition-colors duration-500 group-hover:text-brand-dark">0{index + 1}</span>
+                  <div className="mt-6 grid h-14 w-14 place-items-center rounded-2xl bg-brand/15 text-3xl text-lilac">
+                    <Icon aria-hidden />
+                  </div>
+                  <h3 className="mt-6 font-display text-3xl uppercase tracking-tight">{service.title}</h3>
+                  <p className="mt-4 text-muted leading-relaxed">{service.description}</p>
+                </article>
+              </RevealComponent>
+            );
+          })}
         </div>
-
-        <div className="p-6 bg-linear-to-b from-stone-100 to-stone-300 border border-gray-200 rounded-lg shadow-xl/20 mt-4">
-          {renderConteudo()}
-        </div>
-
       </div>
     </section>
   );

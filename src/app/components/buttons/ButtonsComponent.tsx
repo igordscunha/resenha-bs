@@ -1,13 +1,38 @@
 import { ReactNode } from "react"
+import { FaWhatsapp } from "react-icons/fa";
+import { WHATSAPP_URL } from "@/data/site";
 
-interface BotaoZapComponentProps{
+interface ButtonLinkComponentProps{
+  href: string
   children: string | ReactNode
+  variant?: "primary" | "outline" | "whatsapp"
+  className?: string
+}
+
+const variants = {
+  primary: "bg-brand text-cream hover:bg-[#8d4bb8] shadow-lg shadow-brand/30",
+  outline: "border border-cream/30 text-cream hover:border-cream hover:bg-cream/5",
+  whatsapp: "bg-whatsapp text-[#07361a] hover:brightness-110 shadow-lg shadow-whatsapp/20",
 };
 
-export function BotaoZapComponent({children}: BotaoZapComponentProps){
+export function ButtonLinkComponent({href, children, variant = "primary", className = ""}: ButtonLinkComponentProps){
+  const external = href.startsWith("http");
+
   return(
-    <button className="py-4 px-6 text-xl font-semibold shadow-lg/20 bg-linear-to-b from-[#25D366] to-[#1dc25b] rounded-4xl border border-slate-100 hover:scale-115 hover:text-white active:scale-125">
+    <a
+      href={href}
+      {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+      className={`group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 ${variants[variant]} ${className}`}
+    >
       {children}
-    </button>
+    </a>
+  )
+};
+
+export function BotaoZapComponent({children = "Chamar no WhatsApp", className = ""}: {children?: string | ReactNode, className?: string}){
+  return(
+    <ButtonLinkComponent href={WHATSAPP_URL} variant="whatsapp" className={className}>
+      <FaWhatsapp className="text-lg" aria-hidden />{children}
+    </ButtonLinkComponent>
   )
 };
